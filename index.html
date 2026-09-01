@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Jyoti - Data Analyst | Python | SQL | Power BI. Premium portfolio showcasing data analytics projects, dashboards, and skills." />
+  <meta name="keywords" content="Data Analyst, Python, SQL, Excel, Power BI, Data Analytics, Portfolio, Jyoti" />
+  <meta property="og:title" content="Jyoti | Data Analyst Portfolio" />
+  <meta property="og:description" content="Data Analyst portfolio of Jyoti showcasing Python, SQL, Excel, Power BI and data analytics projects" />
+  <meta property="og:type" content="website" />
+  <title>Jyoti | Data Analyst Portfolio</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    /* Portfolio polish for Projects & Training */
+    .project-card .project-body { display:flex; flex-direction:column; min-height:190px; }
+    .project-card .project-body h3 { margin-bottom:.55rem; }
+    .project-card .project-body p { line-height:1.65; margin-bottom:1rem; }
+    .project-tags span { white-space:nowrap; }
+    .project-links .proj-btn { text-decoration:none; }
+    .repo-link { display:inline-flex; align-items:center; gap:.45rem; margin-top:auto; }
+    .cert-card { min-height:170px; }
+    .cert-body h4 { line-height:1.35; }
+    .cert-body p { line-height:1.5; }
+    @media (min-width: 1100px) { .projects-grid { grid-template-columns:repeat(3,1fr); } }
+    /* Hero skill badges: fixed neatly around the photo */
+    .profile-frame {
+      position: relative !important;
+      width: 360px !important;
+      height: 360px !important;
+      max-width: 360px !important;
+      margin: 0 auto !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      overflow: visible !important;
+    }
+    .profile-img-wrap {
+      position: relative !important;
+      z-index: 4 !important;
+      width: 250px !important;
+      height: 250px !important;
+      border-radius: 50% !important;
+      overflow: hidden !important;
+      flex: 0 0 250px !important;
+    }
+    .profile-photo {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: cover !important;
+      display: block !important;
+    }
+    .profile-ring {
+      position: absolute !important;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      pointer-events: none !important;
+    }
+    .float-badge {
+      position: absolute !important;
+      z-index: 8 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      gap: .45rem !important;
+      min-width: 100px !important;
+      padding: .55rem .8rem !important;
+      border-radius: 12px !important;
+      background: rgba(15, 23, 42, .96) !important;
+      border: 1px solid rgba(0, 212, 255, .35) !important;
+      box-shadow: 0 8px 24px rgba(0,0,0,.28), 0 0 14px rgba(0,212,255,.10) !important;
+      backdrop-filter: blur(10px) !important;
+      -webkit-backdrop-filter: blur(10px) !important;
+      white-space: nowrap !important;
+      pointer-events: none !important;
+      animation: none !important;
+      transform: none !important;
+    }
+    .float-badge i { font-size: 1rem !important; }
+    .fb1 { top: 26px !important; left: 4px !important; right: auto !important; bottom: auto !important; }
+    .fb2 { top: 26px !important; right: 4px !important; left: auto !important; bottom: auto !important; }
+    .fb3 { bottom: 28px !important; left: 4px !important; right: auto !important; top: auto !important; }
+    .fb4 { bottom: 28px !important; right: 4px !important; left: auto !important; top: auto !important; }
+    @media (max-width: 900px) {
+      .profile-frame {
+        width: 330px !important;
+        height: 330px !important;
+        max-width: 330px !important;
+      }
+      .profile-img-wrap {
+        width: 220px !important;
+        height: 220px !important;
+        flex-basis: 220px !important;
+      }
+      .float-badge { min-width: 92px !important; padding: .48rem .65rem !important; font-size: .78rem !important; }
+      .fb1 { top: 20px !important; left: 0 !important; }
+      .fb2 { top: 20px !important; right: 0 !important; }
+      .fb3 { bottom: 20px !important; left: 0 !important; }
+      .fb4 { bottom: 20px !important; right: 0 !important; }
+    }
+    @media (max-width: 560px) {
+      .profile-frame {
+        width: 290px !important;
+        height: 290px !important;
+        max-width: 290px !important;
+      }
+      .profile-img-wrap {
+        width: 190px !important;
+        height: 190px !important;
+        flex-basis: 190px !important;
+      }
+      .float-badge { min-width: 82px !important; padding: .42rem .55rem !important; font-size: .72rem !important; }
+      .fb1 { top: 12px !important; left: 0 !important; }
+      .fb2 { top: 12px !important; right: 0 !important; }
+      .fb3 { bottom: 12px !important; left: 0 !important; }
+      .fb4 { bottom: 12px !important; right: 0 !important; }
+    }
+
+    /* Refined Projects & Training layout */
+    .projects-grid { align-items: stretch; }
+    .project-card { overflow: hidden; }
+    .project-card .project-img { min-height: 190px; position: relative; display:flex; align-items:center; justify-content:center; }
+    .project-card .project-img-content { z-index: 2; text-align:center; }
+    .project-img.project-supermarket { background:linear-gradient(135deg,#166534,#052e16); }
+    .project-img.project-sales { background:linear-gradient(135deg,#0891b2,#0a1628); }
+    .project-img.project-spotify { background:linear-gradient(135deg,#1DB954,#062d16); }
+    .project-img.project-dmart { background:linear-gradient(135deg,#d97706,#1c0a00); }
+    .project-img.project-ecommerce { background:linear-gradient(135deg,#7C3AED,#0d0020); }
+    .project-img.project-cafe { background:linear-gradient(135deg,#be185d,#1a0010); }
+    .project-card .project-body { min-height: 215px; }
+    .project-card .project-body p { min-height: 58px; }
+    .repo-link { font-weight:600; text-decoration:none; }
+    .cert-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.4rem; }
+    .cert-card { min-height:210px; padding:1.4rem; display:flex; align-items:flex-start; gap:1rem; }
+    .cert-badge { width:58px; height:58px; min-width:58px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-size:1.35rem; color:#fff; }
+    .cert-analytics { background:linear-gradient(135deg,#00D4FF,#0f4c68); }
+    .cert-java { background:linear-gradient(135deg,#f59e0b,#92400e); }
+    .cert-employability { background:linear-gradient(135deg,#7C3AED,#3b1563); }
+    .cert-body h4 { margin:.15rem 0 .45rem; line-height:1.3; }
+    .cert-provider { margin:0 0 .45rem; opacity:.9; }
+    .cert-detail { margin:0 0 .9rem; line-height:1.5; }
+    .cert-status { display:inline-block; font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; font-weight:700; opacity:.8; }
+    .cert-status.completed { opacity:.7; }
+    @media (max-width: 900px) { .cert-grid { grid-template-columns:1fr; } }
+    @media (max-width: 700px) { .project-card .project-body p { min-height:0; } }
+  </style>
+
+</head>
+<body>
+
+<!-- LOADING SCREEN -->
+<div id="loader">
+  <div class="loader-inner">
+    <div class="loader-logo">
+      <span class="loader-j">J</span>
+      <div class="loader-bar-wrap"><div class="loader-bar" id="loaderBar"></div></div>
+      <span class="loader-pct" id="loaderPct">0%</span>
+    </div>
+  </div>
+</div>
+
+<!-- CURSOR -->
+<div id="cursor-dot"></div>
+<div id="cursor-ring"></div>
+
+<!-- SCROLL PROGRESS -->
+<div id="scroll-progress"></div>
+
+<!-- NAVBAR -->
+<nav id="navbar">
+  <div class="nav-container">
+    <a href="#hero" class="nav-logo"><span class="logo-dot">Jyoti</span></a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about" class="nav-link">About</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#projects" class="nav-link">Projects</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#github" class="nav-link">GitHub</a></li>
+      <li><a href="#contact" class="nav-link">Contact</a></li>
+    </ul>
+    <div class="nav-actions">
+      <button id="themeToggle" class="theme-btn" aria-label="Toggle theme">
+        <i class="fas fa-moon" id="themeIcon"></i>
+      </button>
+      <a href="#contact" class="nav-cta-btn magnetic">Hire Me</a>
+      <button class="hamburger" id="hamburger" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+  <div class="mobile-drawer" id="mobileDrawer">
+    <ul>
+      <li><a href="#about" class="nav-link" onclick="closeMobileMenu()">About</a></li>
+      <li><a href="#skills" class="nav-link" onclick="closeMobileMenu()">Skills</a></li>
+      <li><a href="#projects" class="nav-link" onclick="closeMobileMenu()">Projects</a></li>
+      <li><a href="#experience" class="nav-link" onclick="closeMobileMenu()">Experience</a></li>
+      <li><a href="#github" class="nav-link" onclick="closeMobileMenu()">GitHub</a></li>
+      <li><a href="#contact" class="nav-link" onclick="closeMobileMenu()">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <canvas id="heroCanvas"></canvas>
+  <div class="mouse-glow" id="mouseGlow"></div>
+
+  <div class="hero-content">
+    <div class="hero-left reveal-left">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Available for Opportunities
+      </div>
+      <h1 class="hero-name">
+        Hi, I'm <span class="gradient-text">Jyoti</span>
+      </h1>
+      <div class="hero-typing-wrap">
+        <span id="heroTyping" class="typing-text"></span>
+        <span class="typing-cursor">|</span>
+      </div>
+      <p class="hero-desc">
+        Motivated Information Technology student focused on Data Analytics and Python programming. I enjoy analyzing data, building dashboards, identifying trends, and turning data into meaningful insights.
+      </p>
+      <div class="hero-btns">
+        <a href="#projects" class="btn-primary magnetic">
+          <i class="fas fa-rocket"></i> View Projects
+        </a>
+        <a href="jyoti resume.pdf" download class="btn-secondary magnetic">
+          <i class="fas fa-download"></i> Download Resume
+        </a>
+        <a href="#contact" class="btn-ghost magnetic">
+          <i class="fas fa-envelope"></i> Contact Me
+        </a>
+      </div>
+      <div class="hero-socials">
+        <a href="https://github.com/jyotimaurya-hub" target="_blank" class="social-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/jyoti-maurya9565" target="_blank" class="social-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:jyotimaurya7581@gmail.com" class="social-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+
+    <div class="hero-right reveal-right">
+      <div class="profile-frame">
+        <div class="profile-ring ring1"></div>
+        <div class="profile-ring ring2"></div>
+        <div class="profile-ring ring3"></div>
+       
+          <div class="profile-img-wrap">
+              <img src="img1.png" alt="Jyoti - Data Analyst" class="profile-photo" />
+             </div>
+          
+            <defs>
+              <linearGradient id="avatarBg" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#0f172a"/>
+                <stop offset="100%" style="stop-color:#1e1b4b"/>
+              </linearGradient>
+              <linearGradient id="skinGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#c8956a"/>
+                <stop offset="100%" style="stop-color:#a0714f"/>
+              </linearGradient>
+              <linearGradient id="clothGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" style="stop-color:#1e3a5f"/>
+                <stop offset="100%" style="stop-color:#0d1b2a"/>
+              </linearGradient>
+            </defs>
+            <rect width="300" height="300" fill="url(#avatarBg)" rx="20"/>
+            <ellipse cx="150" cy="290" rx="110" ry="70" fill="url(#clothGrad)"/>
+            <rect x="133" y="195" width="34" height="40" rx="8" fill="url(#skinGrad)"/>
+            <ellipse cx="150" cy="160" rx="65" ry="75" fill="url(#skinGrad)"/>
+            <ellipse cx="150" cy="103" rx="65" ry="38" fill="#1a0a00"/>
+            <ellipse cx="87" cy="148" rx="18" ry="42" fill="#1a0a00"/>
+            <ellipse cx="213" cy="148" rx="18" ry="42" fill="#1a0a00"/>
+            <ellipse cx="150" cy="95" rx="60" ry="25" fill="#1a0a00"/>
+            <ellipse cx="125" cy="160" rx="10" ry="11" fill="#fff"/>
+            <ellipse cx="175" cy="160" rx="10" ry="11" fill="#fff"/>
+            <circle cx="127" cy="161" r="7" fill="#2d1a00"/>
+            <circle cx="177" cy="161" r="7" fill="#2d1a00"/>
+            <circle cx="129" cy="159" r="2.5" fill="#fff"/>
+            <circle cx="179" cy="159" r="2.5" fill="#fff"/>
+            <path d="M113 147 Q125 142 137 147" stroke="#1a0a00" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M163 147 Q175 142 187 147" stroke="#1a0a00" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <path d="M147 170 Q150 185 153 170" stroke="#c07840" stroke-width="2" fill="none" stroke-linecap="round"/>
+            <path d="M133 195 Q150 205 167 195" fill="#c06060" stroke="none"/>
+            <path d="M135 195 Q150 192 165 195" fill="#e08080" stroke="none"/>
+            <circle cx="86" cy="168" r="5" fill="#ffd700"/>
+            <circle cx="214" cy="168" r="5" fill="#ffd700"/>
+            <path d="M115 235 L150 220 L185 235 L175 260 L150 250 L125 260 Z" fill="#16335e"/>
+            <circle cx="50" cy="50" r="25" fill="#00D4FF" opacity="0.08"/>
+            <circle cx="250" cy="260" r="30" fill="#7C3AED" opacity="0.08"/>
+          </svg>
+        </div>
+        
+      </div>
+    </div>
+  </div>
+
+  <div class="scroll-indicator">
+    <div class="scroll-mouse"><div class="scroll-wheel"></div></div>
+    <span>Scroll Down</span>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">About Me</span>
+      <h2 class="section-title">My <span class="gradient-text">Profile</span></h2>
+    </div>
+
+    <div class="about-grid">
+      <div class="about-text reveal-left">
+        <div class="glass-card about-card">
+          <h3>Professional Summary</h3>
+          <p>Motivated Information Technology student with a strong interest in <strong>Data Analytics and Python programming</strong>. Currently pursuing a Data Analytics Internship at <strong>APPWARS Technologies</strong> and building a strong foundation in Python.</p>
+          <p style="margin-top:1rem;">Passionate about learning data analysis, problem-solving, and transforming data into meaningful insights through practical projects and visualization.</p>
+        </div>
+        <div class="glass-card about-card" style="margin-top:1.5rem;">
+          <h3>Career Goal</h3>
+          <p>Seeking opportunities as a Data Analyst where I can apply Python, SQL, Excel, Power BI, and data visualization skills while continuously developing my analytical and technical abilities.</p>
+        </div>
+      </div>
+
+      <div class="about-right reveal-right">
+        <h3 class="timeline-title">Education</h3>
+        <div class="timeline">
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card glass-card"><span class="timeline-year">Diploma</span><h4>Diploma in Information Technology</h4><p>Aryika Gyanwati Government Girls Polytechnic, Ayodhya</p><span class="badge-chip">76.89%</span></div></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card glass-card"><span class="timeline-year">Class 12</span><h4>UP Board</h4><p>G.V.M. Inter College, Khaparipara Maskanwa, Gonda</p><span class="badge-chip">75.60%</span></div></div>
+          <div class="timeline-item"><div class="timeline-dot"></div><div class="timeline-card glass-card"><span class="timeline-year">Class 10</span><h4>UP Board</h4><p>D.R.C.B. Shukla Memorial Inter College, Maskanwa, Gonda</p><span class="badge-chip">77.66%</span></div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="exp-cards reveal" style="margin-top:4rem;">
+      <h3 class="section-subtitle">Training & Certifications</h3>
+      <div class="exp-grid">
+        <div class="glass-card exp-card tilt-card"><div class="exp-icon"><i class="fas fa-chart-line"></i></div><div class="exp-info"><span class="exp-duration">June 2026 - Present</span><h4>Data Analytics Internship</h4><p class="exp-company"><i class="fas fa-building"></i> APPWARS Technologies</p><p>Currently pursuing a Data Analytics Internship and building a strong foundation in Python and practical data analysis.</p><div class="tags"><span>Data Analytics</span><span>Python</span></div></div></div>
+        <div class="glass-card exp-card tilt-card"><div class="exp-icon"><i class="fas fa-code"></i></div><div class="exp-info"><span class="exp-duration">June 2025 - July 2025</span><h4>Java & Spring Boot Training</h4><p class="exp-company"><i class="fas fa-building"></i> Softpro India</p><p>Completed a 45-day training program focused on Java and Spring Boot.</p><div class="tags"><span>Java</span><span>Spring Boot</span></div></div></div>
+        <div class="glass-card exp-card tilt-card"><div class="exp-icon"><i class="fas fa-users"></i></div><div class="exp-info"><span class="exp-duration">25/09/203 - 30/09/203</span><h4>Employability Skill Programme</h4><p class="exp-company"><i class="fas fa-building"></i> Mahindra Pride Classroom</p><p>Completed a 6-day Employability Skill Programme.</p><div class="tags"><span>Employability</span><span>Professional Skills</span></div></div></div>
+      </div>
+    </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills" class="section section-alt">
+  <div class="container">
+    <div class="section-header reveal"><span class="section-tag">Technical Skills</span><h2 class="section-title">My <span class="gradient-text">Skills</span></h2></div>
+    <div class="skills-categories">
+      <div class="skill-group reveal"><h3 class="skill-group-title"><i class="fas fa-chart-pie"></i> Data Analytics</h3><div class="skills-grid">
+        <div class="skill-card glass-card tilt-card"><div class="skill-icon python"><i class="fab fa-python"></i></div><span class="skill-name">Python</span><div class="skill-bar-wrap"><div class="skill-bar" data-pct="85" style="width:0%"></div></div><span class="skill-pct">85%</span></div>
+        <div class="skill-card glass-card tilt-card"><div class="skill-icon pandas"><i class="fas fa-table"></i></div><span class="skill-name">Pandas</span><div class="skill-bar-wrap"><div class="skill-bar" data-pct="82" style="width:0%"></div></div><span class="skill-pct">82%</span></div>
+        <div class="skill-card glass-card tilt-card"><div class="skill-icon numpy"><i class="fas fa-superscript"></i></div><span class="skill-name">NumPy</span><div class="skill-bar-wrap"><div class="skill-bar" data-pct="78" style="width:0%"></div></div><span class="skill-pct">78%</span></div>
+        <div class="skill-card glass-card tilt-card"><div class="skill-icon sql"><i class="fas fa-database"></i></div><span class="skill-name">SQL</span><div class="skill-bar-wrap"><div class="skill-bar" data-pct="78" style="width:0%"></div></div><span class="skill-pct">78%</span></div>
+        <div class="skill-card glass-card tilt-card"><div class="skill-icon excel"><i class="fas fa-file-excel"></i></div><span class="skill-name">Excel</span><div class="skill-bar-wrap"><div class="skill-bar" data-pct="80" style="width:0%"></div></div><span class="skill-pct">80%</span></div>
+        <div class="skill-card glass-card tilt-card"><div class="skill-icon powerbi"><i class="fas fa-chart-bar"></i></div><span class="skill-name">Power BI</span><div class="skill-bar-wrap"><div class="skill-bar" data-pct="82" style="width:0%"></div></div><span class="skill-pct">82%</span></div>
+      </div></div>
+      <div class="skill-group reveal"><h3 class="skill-group-title"><i class="fas fa-chart-bar"></i> Visualization & Tools</h3><div class="skills-grid">
+        <div class="skill-card glass-card tilt-card"><div class="skill-icon matplotlib"><i class="fas fa-project-diagram"></i></div><span class="skill-name">Matplotlib</span><div class="skill-bar-wrap"><div class="skill-bar" data-pct="78" style="width:0%"></div></div><span class="skill-pct">78%</span></div>
+        <div class="skill-card glass-card tilt-card"><div class="skill-icon seaborn"><i class="fas fa-wave-square"></i></div><span class="skill-name">Seaborn</span><div class="skill-bar-wrap"><div class="skill-bar" data-pct="76" style="width:0%"></div></div><span class="skill-pct">76%</span></div>
+        <div class="skill-card glass-card tilt-card"><div class="skill-icon git"><i class="fab fa-git-alt"></i></div><span class="skill-name">Git / GitHub</span><div class="skill-bar-wrap"><div class="skill-bar" data-pct="75" style="width:0%"></div></div><span class="skill-pct">75%</span></div>
+        <div class="skill-card glass-card tilt-card"><div class="skill-icon html"><i class="fab fa-html5"></i></div><span class="skill-name">HTML / CSS</span><div class="skill-bar-wrap"><div class="skill-bar" data-pct="70" style="width:0%"></div></div><span class="skill-pct">70%</span></div>
+        <div class="skill-card glass-card tilt-card"><div class="skill-icon js"><i class="fab fa-js"></i></div><span class="skill-name">JavaScript</span><div class="skill-bar-wrap"><div class="skill-bar" data-pct="65" style="width:0%"></div></div><span class="skill-pct">65%</span></div>
+        <div class="skill-card glass-card tilt-card"><div class="skill-icon ml"><i class="fas fa-laptop-code"></i></div><span class="skill-name">C / Java</span><div class="skill-bar-wrap"><div class="skill-bar" data-pct="60" style="width:0%"></div></div><span class="skill-pct">60%</span></div>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">My Work</span>
+      <h2 class="section-title">Featured <span class="gradient-text">Projects</span></h2>
+      <p class="section-desc">A selection of my data analytics projects using Python, Excel and Power BI.</p>
+    </div>
+
+    <div class="projects-grid">
+
+      <!-- Supermarket Analysis -->
+      <article class="project-card glass-card tilt-card reveal">
+        <div class="project-img project-supermarket">
+          <div class="project-img-content">
+            <i class="fas fa-file-excel proj-icon"></i>
+            <span class="proj-img-label">Supermarket Analysis</span>
+          </div>
+          <div class="project-overlay">
+            <a href="https://github.com/jyotimaurya-hub/Supermarket-Analysis" target="_blank" rel="noopener" class="proj-btn">
+              <i class="fab fa-github"></i> View GitHub
+            </a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span>Excel</span><span>Data Analysis</span></div>
+          <h3>Supermarket Analysis</h3>
+          <p>Analyzed supermarket sales data to understand sales performance, patterns and business insights.</p>
+          <a class="repo-link" href="https://github.com/jyotimaurya-hub/Supermarket-Analysis" target="_blank" rel="noopener">View Repository <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- Sales Analysis Dashboard -->
+      <article class="project-card glass-card tilt-card reveal">
+        <div class="project-img project-sales">
+          <div class="project-img-content">
+            <i class="fas fa-chart-line proj-icon"></i>
+            <span class="proj-img-label">Sales Analysis Dashboard</span>
+          </div>
+          <div class="project-overlay">
+            <a href="https://github.com/jyotimaurya-hub/Sales-Analysis-Dashboard" target="_blank" rel="noopener" class="proj-btn">
+              <i class="fab fa-github"></i> View GitHub
+            </a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span>Dashboard</span><span>Data Analysis</span></div>
+          <h3>Sales Analysis Dashboard</h3>
+          <p>Sales-focused dashboard project for presenting performance trends and business insights in an easy-to-explore format.</p>
+          <a class="repo-link" href="https://github.com/jyotimaurya-hub/Sales-Analysis-Dashboard" target="_blank" rel="noopener">View Repository <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- Spotify -->
+      <article class="project-card glass-card tilt-card reveal">
+        <div class="project-img project-spotify">
+          <div class="project-img-content">
+            <i class="fab fa-spotify proj-icon"></i>
+            <span class="proj-img-label">Spotify Most Streamed Songs</span>
+          </div>
+          <div class="project-overlay">
+            <a href="https://github.com/jyotimaurya-hub/Spotify-Most-Streamed-Songs" target="_blank" rel="noopener" class="proj-btn">
+              <i class="fab fa-github"></i> View GitHub
+            </a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span>Python</span><span>Data Analysis</span></div>
+          <h3>Spotify Data Analysis</h3>
+          <p>Analyzed Spotify data to explore music trends, artists, tracks and audio features.</p>
+          <a class="repo-link" href="https://github.com/jyotimaurya-hub/Spotify-Most-Streamed-Songs" target="_blank" rel="noopener">View Repository <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- D-Mart -->
+      <article class="project-card glass-card tilt-card reveal">
+        <div class="project-img project-dmart">
+          <div class="project-img-content">
+            <i class="fas fa-chart-bar proj-icon"></i>
+            <span class="proj-img-label">D-Mart Sales Dashboard</span>
+          </div>
+          <div class="project-overlay">
+            <a href="https://github.com/jyotimaurya-hub/dmart-sales-analysis-powerbi" target="_blank" rel="noopener" class="proj-btn">
+              <i class="fab fa-github"></i> View GitHub
+            </a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span>Power BI</span><span>Dashboard</span></div>
+          <h3>D-Mart Sales Dashboard</h3>
+          <p>Built an interactive Power BI dashboard to analyze sales, quantity, ratings, locations, brands and order performance.</p>
+          <a class="repo-link" href="https://github.com/jyotimaurya-hub/dmart-sales-analysis-powerbi" target="_blank" rel="noopener">View Repository <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- E-commerce -->
+      <article class="project-card glass-card tilt-card reveal">
+        <div class="project-img project-ecommerce">
+          <div class="project-img-content">
+            <i class="fas fa-shopping-cart proj-icon"></i>
+            <span class="proj-img-label">E-commerce Data Analysis</span>
+          </div>
+          <div class="project-overlay">
+            <a href="https://github.com/jyotimaurya-hub/ecommerce-sales-data-analysis" target="_blank" rel="noopener" class="proj-btn">
+              <i class="fab fa-github"></i> View GitHub
+            </a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span>Python</span><span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Seaborn</span></div>
+          <h3>E-commerce Data Analysis</h3>
+          <p>Analyzed e-commerce data using Python libraries to identify sales trends and customer insights.</p>
+          <a class="repo-link" href="https://github.com/jyotimaurya-hub/ecommerce-sales-data-analysis" target="_blank" rel="noopener">View Repository <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+      <!-- Dirty Cafe -->
+      <article class="project-card glass-card tilt-card reveal">
+        <div class="project-img project-cafe">
+          <div class="project-img-content">
+            <i class="fas fa-coffee proj-icon"></i>
+            <span class="proj-img-label">Dirty Cafe Data Analysis</span>
+          </div>
+          <div class="project-overlay">
+            <a href="https://github.com/jyotimaurya-hub/dirty-cafe-data-analysis" target="_blank" rel="noopener" class="proj-btn">
+              <i class="fab fa-github"></i> View GitHub
+            </a>
+          </div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span>Python</span><span>Pandas</span></div>
+          <h3>Dirty Cafe Data Analysis</h3>
+          <p>Analyzed cafe sales data using Python and Pandas to identify sales patterns and generate business insights.</p>
+          <a class="repo-link" href="https://github.com/jyotimaurya-hub/dirty-cafe-data-analysis" target="_blank" rel="noopener">View Repository <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- POWER BI -->
+<section id="powerbi" class="section section-alt">
+  <div class="container">
+    <div class="section-header reveal"><span class="section-tag">Dashboard</span><h2 class="section-title">Power BI <span class="gradient-text">Project</span></h2></div>
+    <div class="about-grid">
+      <div class="glass-card about-card reveal-left"><h3>D-Mart Sales Dashboard</h3><p>Interactive Power BI dashboard covering sales, quantity, ratings, states, cities, brands, and order performance.</p><div class="tags" style="margin-top:1rem"><span>Power BI</span><span>Data Visualization</span><span>Interactive Slicers</span></div></div>
+      <div class="glass-card about-card reveal-right"><h3>Dashboard Focus</h3><p>Designed to make sales performance and business trends easier to explore through interactive visuals and filters.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- TRAINING & CERTIFICATIONS -->
+<section id="certifications" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Learning</span>
+      <h2 class="section-title">Training & <span class="gradient-text">Certifications</span></h2>
+      <p class="section-desc">Internship and training programs from my resume.</p>
+    </div>
+
+    <div class="cert-grid reveal">
+
+      <article class="cert-card glass-card">
+        <div class="cert-badge cert-analytics">
+          <i class="fas fa-chart-line"></i>
+        </div>
+        <div class="cert-body">
+          <span class="cert-status">Ongoing</span>
+          <h4>Data Analytics Internship</h4>
+          <p class="cert-provider"><i class="fas fa-building"></i> APPWARS Technologies</p>
+          <p class="cert-detail">Building practical skills in Python and Data Analytics.</p>
+          <span class="badge-chip">June 2026 &ndash; Present</span>
+        </div>
+      </article>
+
+      <article class="cert-card glass-card">
+        <div class="cert-badge cert-java">
+          <i class="fas fa-code"></i>
+        </div>
+        <div class="cert-body">
+          <span class="cert-status completed">Completed</span>
+          <h4>Java &amp; Spring Boot Training</h4>
+          <p class="cert-provider"><i class="fas fa-building"></i> Softpro India</p>
+          <p class="cert-detail">Completed a 45-day training program in Java and Spring Boot.</p>
+          <span class="badge-chip">June 2025 &ndash; July 2025</span>
+        </div>
+      </article>
+
+      <article class="cert-card glass-card">
+        <div class="cert-badge cert-employability">
+          <i class="fas fa-users"></i>
+        </div>
+        <div class="cert-body">
+          <span class="cert-status completed">Completed</span>
+          <h4>Employability Skill Programme</h4>
+          <p class="cert-provider"><i class="fas fa-building"></i> Mahindra Pride Classroom</p>
+          <p class="cert-detail">Completed a 6-day employability skills programme.</p>
+          <span class="badge-chip">25/09/203 &ndash; 30/09/203</span>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+
+<section id="experience" class="section">
+  <div class="container">
+    <div class="section-header reveal"><span class="section-tag">Experience</span><h2 class="section-title">My <span class="gradient-text">Journey</span></h2></div>
+    <div class="v-timeline"><div class="v-line"></div>
+      <div class="v-item v-left reveal-left"><div class="v-card glass-card"><span class="v-date">June 2026 - Present</span><h4>Data Analytics Internship</h4><p class="v-company">APPWARS Technologies</p><ul class="v-list"><li>Building a strong foundation in Python and Data Analytics</li><li>Developing practical data analysis skills</li><li>Learning to apply analytical and problem-solving techniques to real-world datasets</li></ul></div><div class="v-dot"></div></div>
+      <div class="v-item v-right reveal-right"><div class="v-dot"></div><div class="v-card glass-card"><span class="v-date">June 2025 - July 2025</span><h4>Java & Spring Boot Training</h4><p class="v-company">Softpro India</p><ul class="v-list"><li>Completed 45-day training in Java and Spring Boot</li></ul></div></div>
+      <div class="v-item v-left reveal-left"><div class="v-card glass-card"><span class="v-date">25/09/203 - 30/09/203</span><h4>Employability Skill Programme</h4><p class="v-company">Mahindra Pride Classroom</p><ul class="v-list"><li>Completed a 6-day employability skills programme</li></ul></div><div class="v-dot"></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- GITHUB -->
+<section id="github" class="section section-alt">
+  <div class="container">
+    <div class="section-header reveal"><span class="section-tag">Open Source</span><h2 class="section-title">My <span class="gradient-text">GitHub</span></h2></div>
+    <div class="github-grid reveal">
+      <div class="github-stat-card glass-card"><div class="gh-placeholder"><i class="fab fa-github"></i><p>GitHub Profile</p><span>@jyotimaurya-hub</span><a href="https://github.com/jyotimaurya-hub" target="_blank" class="btn-secondary" style="margin-top:1rem;display:inline-flex">View GitHub</a></div></div>
+      <div class="github-stat-card glass-card"><div class="gh-placeholder"><i class="fas fa-chart-line"></i><p>Data Analytics Projects</p><span>Python | Pandas | Power BI | Excel</span></div></div>
+      <div class="github-stat-card glass-card"><div class="gh-placeholder"><i class="fas fa-code"></i><p>Development</p><span>Python | Java | HTML | CSS | JavaScript</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT CTA -->
+
+<section id="contact" class="section">
+  <div class="container">
+    <div class="section-header reveal">
+      <span class="section-tag">Get In Touch</span>
+      <h2 class="section-title">Let's <span class="gradient-text">Connect</span></h2>
+      <p class="section-desc">I'm actively looking for Data Analyst opportunities. Let's talk!</p>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-left reveal-left">
+        <div class="contact-info-card glass-card">
+          <h3>Contact Information</h3>
+          <div class="contact-info-item"><div class="ci-icon"><i class="fas fa-envelope"></i></div><div><strong>Email</strong><span>jyotimaurya7581@gmail.com</span></div></div>
+          <div class="contact-info-item"><div class="ci-icon"><i class="fas fa-map-marker-alt"></i></div><div><strong>Location</strong><span>Gonda, Uttar Pradesh, India</span></div></div>
+          <div class="contact-info-item"><div class="ci-icon"><i class="fas fa-phone"></i></div><div><strong>Phone</strong><span>9565717581</span></div></div>
+          <div class="contact-socials">
+            <a href="https://github.com/jyotimaurya-hub" target="_blank" class="cs-link" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/jyoti-maurya9565" target="_blank" class="cs-link" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:jyotimaurya7581@gmail.com" class="cs-link" aria-label="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://instagram.com" target="_blank" class="cs-link" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-right reveal-right">
+        <form class="contact-form glass-card" id="contactForm" novalidate>
+          <div class="form-group">
+            <label for="cname">Full Name</label>
+            <div class="input-wrap"><i class="fas fa-user input-icon"></i><input type="text" id="cname" name="name" placeholder="Your full name" required /></div>
+            <span class="form-error" id="nameError">Please enter your name</span>
+          </div>
+          <div class="form-group">
+            <label for="cemail">Email Address</label>
+            <div class="input-wrap"><i class="fas fa-envelope input-icon"></i><input type="email" id="cemail" name="email" placeholder="your@email.com" required /></div>
+            <span class="form-error" id="emailError">Please enter a valid email</span>
+          </div>
+          <div class="form-group">
+            <label for="csubject">Subject</label>
+            <div class="input-wrap"><i class="fas fa-tag input-icon"></i><input type="text" id="csubject" name="subject" placeholder="Job opportunity / Collaboration" required /></div>
+            <span class="form-error" id="subjectError">Please enter a subject</span>
+          </div>
+          <div class="form-group">
+            <label for="cmessage">Message</label>
+            <textarea id="cmessage" name="message" rows="5" placeholder="Tell me about the opportunity..." required></textarea>
+            <span class="form-error" id="messageError">Please enter your message</span>
+          </div>
+          <button type="submit" class="btn-primary magnetic full-width" id="submitBtn">
+            <i class="fas fa-paper-plane"></i> Send Message
+          </button>
+          <div class="form-success" id="formSuccess">
+            <i class="fas fa-check-circle"></i> Message sent! I'll get back to you within 24 hours.
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer id="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="footer-logo">J<span class="logo-dot">.</span></span>
+        <p>Data Analyst | Python | SQL | Power BI</p>
+      </div>
+      <div class="footer-links">
+        <a href="#about">About</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#contact">Contact</a>
+      </div>
+      <div class="footer-socials">
+        <a href="https://github.com/jyotimaurya-hub" target="_blank" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://linkedin.com/in/jyoti-maurya9565" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="mailto:jyotimaurya7581@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+        <a href="https://instagram.com" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 <span class="gradient-text">Jyoti</span>. Crafted with <span style="color:#ef4444">&#9829;</span> in Gonda, Uttar Pradesh, India.</p>
+      <p>Designed for impact. Built for opportunity.</p>
+    </div>
+  </div>
+</footer>
+
+<button id="backToTop" aria-label="Back to top"><i class="fas fa-arrow-up"></i></button>
+
+<script src="script.js"></script>
+</body>
+</html>
